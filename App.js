@@ -5,15 +5,40 @@ import AddTodo from "./src/components/add-todo";
 
 export default function App() {
 
+  const [ todos, setTodos ] = useState([]);
+
+  const addTodo = (title) => {
+    const newTodo = {
+      id: Date.now().toString(),
+      title,
+      important: false
+    }
+
+    setTodos(prev => [...prev, newTodo])
+
+    console.log(todos)
+  }
+
   return (
-    <View style={styles.container}>
+    <View>
       <Navbar title="ToDo app" />
-      <AddTodo />
+      <View style={styles.container}>
+        <AddTodo addTodo={addTodo} />
+        <View>
+          {
+            todos.map(({ id, title }) => (
+                <Text key={id}>{title}</Text>
+              )
+            )
+          }
+        </View>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    padding: 20
   },
 });
