@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import Navbar from "./src/components/navbar";
 import AddTodo from "./src/components/add-todo";
+import ItemList from "./src/components/item-list";
 
 export default function App() {
 
@@ -24,14 +25,7 @@ export default function App() {
       <Navbar title="ToDo app" />
       <View style={styles.container}>
         <AddTodo addTodo={addTodo} />
-        <View>
-          {
-            todos.map(({ id, title }) => (
-                <Text key={id}>{title}</Text>
-              )
-            )
-          }
-        </View>
+        <ItemList todos={todos} />
       </View>
     </View>
   );
