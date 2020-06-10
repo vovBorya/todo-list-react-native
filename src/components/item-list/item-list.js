@@ -1,7 +1,8 @@
 import React from 'react';
 import {
   View,
-  StyleSheet
+  StyleSheet,
+  ScrollView
 } from 'react-native';
 import ItemDetails from "../item-details";
 
@@ -21,9 +22,6 @@ const ItemList = ({ todos }) => {
 const styles = StyleSheet.create({
   list: {
     marginTop: 15,
-    borderColor: '#0277bd',
-    borderWidth: 1,
-    borderRadius: 5
   }
 })
 

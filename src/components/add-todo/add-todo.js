@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import {
   View,
   StyleSheet,
-  Text,
   Button,
-  TextInput
+  TextInput,
+  Alert
 } from 'react-native';
 
 const AddTodo = ({ addTodo }) => {
@@ -14,7 +14,8 @@ const AddTodo = ({ addTodo }) => {
   const onAddedBtnClick = () => {
     if (text !== '') {
       addTodo(text);
-    } else alert('Enter title of task')
+    } else Alert.alert('Ooops', 'Please, enter title of task')
+    setText('');
   }
 
   return (
@@ -22,7 +23,7 @@ const AddTodo = ({ addTodo }) => {
       <TextInput
         style={styles.textInput}
         placeholder="Please, enter title of your new task"
-        onChangeText={text => setText(text)}
+        onChangeText={setText}
         defaultValue={text}
       />
       <Button

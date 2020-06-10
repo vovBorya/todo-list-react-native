@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Button,
+  ScrollView,
+  FlatList
+} from 'react-native';
 import Navbar from "./src/components/navbar";
 import AddTodo from "./src/components/add-todo";
 import ItemList from "./src/components/item-list";
+import ItemDetails from "./src/components/item-details";
 
 export default function App() {
 
@@ -14,10 +23,7 @@ export default function App() {
       title,
       important: false
     }
-
     setTodos(prev => [...prev, newTodo])
-
-    console.log(todos)
   }
 
   return (
@@ -25,7 +31,11 @@ export default function App() {
       <Navbar title="ToDo app" />
       <View style={styles.container}>
         <AddTodo addTodo={addTodo} />
-        <ItemList todos={todos} />
+        <FlatList
+          keyExtractor={item => item.id}
+          data={todos}
+          renderItem={({ item }) => <ItemDetails title={item.title} />}
+        />
       </View>
     </View>
   );

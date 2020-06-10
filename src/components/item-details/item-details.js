@@ -4,6 +4,7 @@ import {
   Text,
   StyleSheet
 } from 'react-native';
+import ActionButtons from "../action-buttons";
 
 const ItemDetails = ({ title }) => {
   return (
@@ -16,9 +17,15 @@ const ItemDetails = ({ title }) => {
 const styles = StyleSheet.create({
   item: {
     fontSize: 17,
-    padding: 20,
+    marginTop: 5,
+    marginBottom: 5,
+    padding: 10,
     borderColor: '#0277bd',
-    borderBottomWidth: 1
+    borderWidth: 1,
+    borderRadius: 5
+  },
+  buttons: {
+    padding: 8
   }
 })
 
