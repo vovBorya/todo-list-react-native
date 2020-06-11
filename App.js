@@ -24,13 +24,33 @@ export default function App() {
       important: false,
       done: false
     }
-    setTodos(prev => [...prev, newTodo])
+    setTodos(prev => [...prev, newTodo]);
   }
 
-/*  const onToggleImportant = (id) => {
+  const toggleProperty = (id, propName) => {
     const index = todos.findIndex(el => el.id === id);
-    const new
-  }*/
+
+    const oldItem = todos[index];
+    const newItem = {
+      ...oldItem,
+      [propName]: !oldItem[propName]
+    }
+
+    return [
+      ...todos.slice(0, index),
+      newItem,
+      ...todos.slice(index + 1)
+    ]
+  }
+
+  const onToggleImportant = (id) => {
+    setTodos(toggleProperty(id, 'important'))
+  }
+
+  const onToggleDone = (id) => {
+    console.log(todos.find(el => el.id === id))
+    setTodos(toggleProperty(id, 'done'))
+  }
 
   const removeTodo = (id) => {
     setTodos( todos => {
@@ -51,7 +71,15 @@ export default function App() {
           style={styles.list}
           keyExtractor={item => item.id}
           data={todos}
-          renderItem={({ item }) => <ItemDetails item={item} removeTodo={removeTodo} />}
+          renderItem={({ item }) => (
+            <ItemDetails
+              item={item}
+              onRemove={removeTodo}
+              onImportant={onToggleImportant}
+              onDone={onToggleDone}
+            />
+            )
+          }
         />
       </View>
     </View>

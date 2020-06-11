@@ -26,11 +26,13 @@ const AddTodo = ({ addTodo }) => {
         onChangeText={setText}
         defaultValue={text}
       />
-      <Button
-        style={styles.button}
-        title="Add task"
-        onPress={() => onAddedBtnClick()}
-      />
+      <View style={styles.button}>
+        <Button
+          title="Add task"
+          onPress={() => onAddedBtnClick()}
+          disabled={false}
+        />
+      </View>
     </View>
   )
 }
