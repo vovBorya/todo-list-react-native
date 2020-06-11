@@ -26,13 +26,11 @@ const AddTodo = ({ addTodo }) => {
         onChangeText={setText}
         defaultValue={text}
       />
-      <View style={styles.button}>
-        <Button
-          title="Add task"
-          onPress={() => onAddedBtnClick()}
-          disabled={false}
-        />
-      </View>
+      <Button
+        title="Add task"
+        onPress={() => onAddedBtnClick()}
+        disabled={false}
+      />
     </View>
   )
 }
@@ -48,10 +46,6 @@ const styles = StyleSheet.create({
     padding: 7,
     borderRadius: 5,
     borderColor: '#0277bd',
-    borderWidth: 1
-  },
-  button: {
-    borderRadius: 5,
     borderWidth: 1
   }
 })

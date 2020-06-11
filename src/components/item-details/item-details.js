@@ -23,12 +23,11 @@ const ItemDetails = ({ item, onRemove, onImportant, onDone }) => {
     >
       <View style={styles.item}>
         <Text style={itemStyle} >{title}</Text>
-        <View style={styles.button}>
-          <Button
-            title="x"
-            onPress={() => onRemove(id)}
-          />
-        </View>
+        <Button
+          title="x"
+          color='#ff3d00'
+          onPress={() => onRemove(id)}
+        />
       </View>
     </TouchableOpacity>
   )
@@ -47,11 +46,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between'
-  },
-  button: {
-    padding: 8,
-    backgroundColor: '#ff3d00',
-    borderRadius: 5
   }
 })
 
