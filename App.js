@@ -21,9 +21,25 @@ export default function App() {
     const newTodo = {
       id: Date.now().toString(),
       title,
-      important: false
+      important: false,
+      done: false
     }
     setTodos(prev => [...prev, newTodo])
+  }
+
+/*  const onToggleImportant = (id) => {
+    const index = todos.findIndex(el => el.id === id);
+    const new
+  }*/
+
+  const removeTodo = (id) => {
+    setTodos( todos => {
+      const index = todos.findIndex((el) => el.id === id)
+      return [
+        ...todos.slice(0, index),
+        ...todos.slice(index + 1)
+      ]
+    })
   }
 
   return (
@@ -32,9 +48,10 @@ export default function App() {
       <View style={styles.container}>
         <AddTodo addTodo={addTodo} />
         <FlatList
+          style={styles.list}
           keyExtractor={item => item.id}
           data={todos}
-          renderItem={({ item }) => <ItemDetails title={item.title} />}
+          renderItem={({ item }) => <ItemDetails item={item} removeTodo={removeTodo} />}
         />
       </View>
     </View>
@@ -43,6 +60,10 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20
+    padding: 20,
+    marginBottom: 220
   },
+  list: {
+    marginTop: 20
+  }
 });

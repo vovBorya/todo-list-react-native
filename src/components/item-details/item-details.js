@@ -2,15 +2,23 @@ import React from 'react';
 import {
   View,
   Text,
-  StyleSheet
+  StyleSheet,
+  TouchableOpacity
 } from 'react-native';
-import ActionButtons from "../action-buttons";
 
-const ItemDetails = ({ title }) => {
+const ItemDetails = ({ item, removeTodo }) => {
+
+  const { id, title, important } = item;
+
   return (
-    <View style={styles.item}>
-      <Text>{title}</Text>
-    </View>
+    <TouchableOpacity
+      onPress={() => console.log(`pressed ${id}`)}
+      onLongPress={() => removeTodo(id)}
+    >
+      <View style={styles.item}>
+        <Text style={ important && styles.important } >{title}</Text>
+      </View>
+    </TouchableOpacity>
   )
 }
 
@@ -26,6 +34,10 @@ const styles = StyleSheet.create({
   },
   buttons: {
     padding: 8
+  },
+  important: {
+    fontWeight: 'bold',
+    color: '#3d5afe'
   }
 })
 
